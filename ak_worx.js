@@ -1,8 +1,8 @@
 
 $(document).ready(function() {
     console.log( "ready!" );
-    $("#worx_origin #document").change(function() {
-  alert( "Handler for .change() called." );
+    $("#worx_origin").change(function() {
+        alert( "Handler for .change() called." );
     });
 });
 
