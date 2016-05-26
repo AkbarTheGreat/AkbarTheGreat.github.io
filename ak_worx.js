@@ -7,6 +7,7 @@ $(function() {
        function(data)
        {
         alert('page content: ' + data);
-       });
+       },
+       "html");
 });
 
