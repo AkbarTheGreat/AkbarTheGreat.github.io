@@ -1,4 +1,12 @@
+
 $(function() {
     console.log( "ready!" );
-    $( "#main" ).load( "http://www.worxnc.com/players/signup1.php" );
+    $.get(
+       "http://www.worxnc.com/players/signup1.php",
+       {},
+       function(data)
+       {
+        alert('page content: ' + data);
+       });
 });
+
