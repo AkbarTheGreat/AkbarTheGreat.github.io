@@ -2,7 +2,7 @@
 $(function() {
     console.log( "ready!" );
     $.get(
-       "http://www.worxnc.com/players/signup1.php",
+       "http://www.worxnc.com/players/login1.php",
        {},
        function(data)
        {
