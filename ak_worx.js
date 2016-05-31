@@ -1,32 +1,37 @@
 
-function getWorxDocument()
+var oldSite = 'http://www.worxnc.com/players/login1.php';
+var ping    = 'http://akbar.duckdns.org/worx/ping';
+var newSite = 'http://akbar.duckdns.org/worx/ping';
+
+var newSiteOnline
+
+function loadOldSite()
 {
-	var htmlString = $('#worx_origin').html();
-	return $('#worx_origin')[0].contentDocument;
+	alert("Failure!");
+//	window.location.replace(oldSite);
 }
 
-function getData(children)
+function loadNewSite()
 {
-	children.each(function(idx, val)
-	{
-		console.log("thing");
-		console.log( val.val() );
-	});
+	alert("Success!");
+//	window.location.replace(newSite);
 }
 
-$(function()
-{
-	   var script = document.createElement('script');
-	    script.setAttribute('type', 'text/javascript');
-	    script.setAttribute('src', 'http://www.worxnc.com/players/login1.php');
-
-	console.log( 'ready!' );
-	$('#go_button').click(function()
+$(function(){
+//	try
 	{
-//		$('#worx_origin').hide();
-//		getData($('#worx_origin #form4 input'));
-		innerDoc = getWorxDocument();
-		getData($('#form4', innerDoc));
-	});
+		$.ajax({
+		    url: ping,
+		    data: {},
+		    type: 'GET',
+		    crossDomain: true,
+		    dataType: 'jsonp',
+		    success: function() { loadNewSite(); },
+		    error: function()   { loadOldSite(); },
+		});
+	}
+//	catch(e)
+//	{
+//		alert("Unexpected Failure!");
+//	}
 });
-
