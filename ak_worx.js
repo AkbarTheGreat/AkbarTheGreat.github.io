@@ -1,37 +1,20 @@
 
 var oldSite = 'http://www.worxnc.com/players/login1.php';
 var ping    = 'http://akbar.duckdns.org/worx/ping';
-var newSite = 'http://akbar.duckdns.org/worx/ping';
-
-var newSiteOnline
+var newSite = 'http://akbar.duckdns.org/worx/signups';
 
 function loadOldSite()
 {
-	alert("Failure!");
-//	window.location.replace(oldSite);
+	alert("New site down, loading original site.");
+	window.location.replace(oldSite);
 }
 
 function loadNewSite()
 {
-	alert("Success!");
-//	window.location.replace(newSite);
+	window.location.replace(newSite);
 }
 
-$(function(){
-//	try
+$(function()
 	{
-		$.ajax({
-		    url: ping,
-		    data: {},
-		    type: 'GET',
-		    crossDomain: true,
-		    dataType: 'jsonp',
-		    success: function() { loadNewSite(); },
-		    error: function()   { loadOldSite(); },
-		});
-	}
-//	catch(e)
-//	{
-//		alert("Unexpected Failure!");
-//	}
-});
+		$.get(ping, {}, function() { loadNewSite(); }).fail(function() { loadOldSite(); });
+	});
